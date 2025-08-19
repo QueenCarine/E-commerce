@@ -1,22 +1,24 @@
-"use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image'; 
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-  
+
     if (email && password) {
-      setError("");
-      router.push("/");
+      setError('');
+      router.push('/');
     } else {
-      setError("Please enter both email and password.");
+      setError('Please enter both email and password.');
     }
   }
 
@@ -25,16 +27,21 @@ export default function LoginPage() {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {}
         <div className="rounded bg-gray-100 overflow-hidden">
-          <img
+          <Image
             src="/images/cart.jpg"
             alt="Shopping cart"
+            width={600}
+            height={440}
             className="w-full h-[440px] object-cover"
+            priority 
           />
         </div>
 
         {}
         <section aria-labelledby="login-title" className="w-full max-w-md md:ml-auto">
-          <h1 id="login-title" className="text-2xl font-semibold">Log in to your account</h1>
+          <h1 id="login-title" className="text-2xl font-semibold">
+            Log in to your account
+          </h1>
           <p className="mt-2 text-sm text-gray-500">Enter your credentials below</p>
 
           <form className="mt-6 space-y-4" onSubmit={handleLogin}>
@@ -45,7 +52,7 @@ export default function LoginPage() {
               className="w-full rounded border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
               required
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               name="password"
@@ -54,7 +61,7 @@ export default function LoginPage() {
               className="w-full rounded border border-gray-300 px-4 py-2.5 outline-none focus:border-black"
               required
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
@@ -66,7 +73,7 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-4 text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{' '}
             <Link href="/signup" className="underline">
               Sign up
             </Link>
