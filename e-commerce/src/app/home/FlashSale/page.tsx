@@ -1,17 +1,16 @@
 "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Heart, Eye, Star, ArrowLeft, ArrowRight } from "lucide-react";
 
-export function FlashSales() {
-    const [currentSlide, setCurrentSlide] = useState(0);
+export default function FlashSalePage() {
     const [timeLeft, setTimeLeft] = useState({
-        days: 3,
+        days: 1,
         hours: 23,
-        minutes: 19,
-        seconds: 56
+        minutes: 59,
+        seconds: 59,
     });
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {

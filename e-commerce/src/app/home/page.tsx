@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Hero from "./Hero/page";
-import { FlashSales } from "./FlashSale/page";
+import FlashSalePage from "./FlashSale/page";
 import Categories from "./Categories/page";
 import BestSelling from "./BestSelling/page";
 import OurProducts from "./OurProducts/page";
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <FlashSales />
+  <FlashSalePage />
       <Categories />
       <BestSelling />
       <OurProducts />

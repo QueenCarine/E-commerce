@@ -1,29 +1,28 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { FlashSales } from "./page";
+import FlashSalePage from "./page";
 
 describe("FlashSales Component", () => {
   it("renders timer labels and values", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     expect(screen.getByText("Days")).toBeInTheDocument();
     expect(screen.getByText("Hours")).toBeInTheDocument();
     expect(screen.getByText("Minutes")).toBeInTheDocument();
     expect(screen.getByText("Seconds")).toBeInTheDocument();
-    expect(screen.getByText("03")).toBeInTheDocument();
-    expect(screen.getByText("23")).toBeInTheDocument();
-    expect(screen.getByText("19")).toBeInTheDocument();
-    expect(screen.getByText("56")).toBeInTheDocument();
+  expect(screen.getByText("01")).toBeInTheDocument();
+  expect(screen.getByText("23")).toBeInTheDocument();
+  expect(screen.getAllByText("59")).toHaveLength(2);
   });
 
   it("renders section headings", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     expect(screen.getByText("Today's")).toBeInTheDocument();
     expect(screen.getByText("Flash Sales")).toBeInTheDocument();
   });
 
   it("renders 4 products per slide", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     expect(screen.getByText("HAVIT HV-G92 Gamepad")).toBeInTheDocument();
     expect(screen.getByText("AK-900 Wired Keyboard")).toBeInTheDocument();
     expect(screen.getByText("IPS LCD Gaming Monitor")).toBeInTheDocument();
@@ -31,7 +30,7 @@ describe("FlashSales Component", () => {
   });
 
   it("renders navigation arrow buttons", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     const buttons = screen.getAllByRole("button");
     expect(buttons.length).toBeGreaterThanOrEqual(7);
     expect(buttons[0]).toBeDisabled();
@@ -39,7 +38,7 @@ describe("FlashSales Component", () => {
   });
 
   it("navigates to next and previous slides", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     const nextButton = screen.getAllByRole("button")[1];
     fireEvent.click(nextButton);
     expect(screen.getByText("RGB Mechanical Keyboard")).toBeInTheDocument();
@@ -52,12 +51,12 @@ describe("FlashSales Component", () => {
   });
 
   it("renders View All Products button", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     expect(screen.getByText("View All Products")).toBeInTheDocument();
   });
 
   it("renders dots for slides and highlights current slide", () => {
-    render(<FlashSales />);
+  render(<FlashSalePage />);
     const dotButtons = screen.getAllByRole("button").filter(btn =>
       btn.className.includes("w-3") && btn.className.includes("h-3")
     );
