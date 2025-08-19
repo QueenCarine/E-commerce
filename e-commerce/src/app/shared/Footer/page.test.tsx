@@ -2,14 +2,15 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Footer from "./page";
 
+import type { ImgHTMLAttributes } from "react";
 jest.mock("next/image", () => ({
   __esModule: true,
-  default: (props: any) => <img {...props} />,
+  default: (props: ImgHTMLAttributes<HTMLImageElement>) => <img {...props} alt={props.alt || "mocked image"} />,
 }));
 
 jest.mock("next/link", () => ({
   __esModule: true,
-  default: ({ children, href }: any) => <a href={href}>{children}</a>,
+  default: ({ children, href }: { children: React.ReactNode; href: string }) => <a href={href}>{children}</a>,
 }));
 
 describe("Footer", () => {
