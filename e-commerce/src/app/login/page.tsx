@@ -1,5 +1,5 @@
-'use client';
-
+"use client";
+import React from "react";
 import Link from 'next/link';
 import Image from 'next/image'; 
 import { useRouter } from 'next/navigation';
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     if (email && password) {
       setError('');
-      router.push('/');
+    router.push("/home");
     } else {
       setError('Please enter both email and password.');
     }
@@ -29,7 +29,7 @@ export default function LoginPage() {
         <div className="rounded bg-gray-100 overflow-hidden">
           <Image
             src="/images/cart.jpg"
-            alt="Shopping cart"
+            alt="Login visual"
             width={600}
             height={440}
             className="w-full h-[440px] object-cover"
